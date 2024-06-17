@@ -10,7 +10,7 @@ const db = require("./config/mongoose-connection");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser);
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
@@ -18,5 +18,16 @@ app.use("/owners", ownersRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 
+app.get("/", (req, res) => {
+    res.send("hey from root");
+})
 
-app.listen(3000);
+
+try {
+    app.listen(3000, () => {
+        console.log("server started")
+    });
+}
+catch (err) {
+    console.log(err.message)
+}

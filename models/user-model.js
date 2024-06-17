@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
         type: Array,
         default: []
     },
-    isadmin: Boolean,
+
     orders: [],
     contact: Number,
     picture: String,
